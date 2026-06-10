@@ -1,0 +1,4 @@
+interface:
+  display_name: "Dotfiles Manage"
+  short_description: "Manage dotfiles via bare repo"
+  default_prompt: "Manage dotfiles with myconfig"
