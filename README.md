@@ -11,6 +11,10 @@ This repository contains the `dotfiles-manage` agent skill. The canonical agent 
 - `SKILL.md`: Skill metadata and agent workflow instructions.
 - `agents/openai.yaml`: OpenAI/Codex UI metadata for this skill.
 
+## Dependencies
+
+- MCP dependencies: None detected.
+
 ## Usage
 
 Install or link this repository as a skill directory for an agent that supports `SKILL.md` based skills.
