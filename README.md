@@ -1,6 +1,6 @@
 # Dotfiles Manage Skill
 
-Manage dotfiles tracked via the bare-repo pattern using the myconfig alias (git --git-dir=$HOME/.cfg/ --work-tree=$HOME). Use when the user mentions myconfig, asks to edit or commit dotfiles, or works with files tracked in $HOME such as ~/.zshrc, ~/.codex/AGENTS.md, ~/.gitconfig-*, or similar.
+Manage dotfiles in $HOME tracked by the bare repo at ~/.cfg (the myconfig alias, git --git-dir=$HOME/.cfg/ --work-tree=$HOME). Use when the user mentions myconfig, or asks to edit, stage, commit, or push tracked $HOME files such as ~/.zshrc, ~/.gitconfig-*, agent harness instruction files, or agent skill symlinks. Not for editing skill content in a skill that is its own git repo (commit in that repo) or for creating and wiring new skills.
 
 ## Purpose
 
