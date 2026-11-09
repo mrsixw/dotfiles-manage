@@ -53,11 +53,22 @@ to the current directory). Typical tracked files:
 - Git: `~/.gitconfig` and any included `~/.gitconfig-*` files
 - Agent harness instruction files (for example `~/.claude/CLAUDE.md`,
   `~/.codex/AGENTS.md`, `~/.copilot/copilot-instructions.md`)
+- Declarative agent settings and plugin configuration (for example
+  `~/.claude/settings.json`, `~/.copilot/config.json`)
+- Generated machine-state inventories (for example
+  `~/.config/dotfiles/agents.txt` and `~/.config/dotfiles/skills.manifest`,
+  recording CLI versions, plugin marketplaces, enabled or installed plugins
+  across Claude, Codex, and Antigravity, and skill sources)
 - Agent skill directories whose entries are symlinks to a shared skills
   directory
 
 When a skill is its own git repo, its content is **not** tracked here. Commit
 skill changes in that repo, not via `myconfig`.
+
+Plugin clones and harness caches (for example `~/.claude/plugins/`,
+`~/.codex/plugins/`, `~/.gemini/config/plugins/`) are not tracked directly
+either; track plugins through declarative settings and generated inventories
+instead.
 
 ## Harness Instruction Files
 
