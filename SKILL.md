@@ -59,8 +59,18 @@ to the current directory). Typical tracked files:
   `~/.config/dotfiles/agents.txt` and `~/.config/dotfiles/skills.manifest`,
   recording CLI versions, plugin marketplaces, enabled or installed plugins
   across Claude, Codex, and Antigravity, and skill sources)
+- A generated Homebrew inventory (for example `~/.config/dotfiles/Brewfile`
+  from `brew bundle dump`), recording taps, formulae, casks and Mac App Store
+  apps so that `brew bundle install` can restore them
 - Agent skill directories whose entries are symlinks to a shared skills
   directory
+
+Generated inventories are usually refreshed and staged by a `pre-commit` hook,
+so expect them in your commits. Never hand-edit them. To change what they
+record, change the machine (for example `brew install` or `brew uninstall`)
+and commit; the hook captures the new state. If the hook can be skipped (for
+example with an environment variable), a skipped commit leaves them stale
+until the next normal commit.
 
 When a skill is its own git repo, its content is **not** tracked here. Commit
 skill changes in that repo, not via `myconfig`.
