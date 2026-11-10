@@ -79,6 +79,12 @@ harness-specific.
 
 ## Committing
 
+- Commit dotfiles directly on the default branch (usually `main`) and push
+  there. Do not create feature branches or open pull requests for dotfile
+  changes unless the user asks for one.
+- Check the branch before every commit (`myconfig branch --show-current`). If
+  it is not the default branch, for example one left over from an earlier
+  session, stop and ask before committing. Don't commit to it and push.
 - Use the repository's existing commit identity and message conventions. If
   no identity is configured, use a one-off `git -c user.name=… -c
   user.email=…`; never write git config to fix it.
