@@ -53,11 +53,32 @@ to the current directory). Typical tracked files:
 - Git: `~/.gitconfig` and any included `~/.gitconfig-*` files
 - Agent harness instruction files (for example `~/.claude/CLAUDE.md`,
   `~/.codex/AGENTS.md`, `~/.copilot/copilot-instructions.md`)
+- Declarative agent settings and plugin configuration (for example
+  `~/.claude/settings.json`, `~/.copilot/config.json`)
+- Generated machine-state inventories (for example
+  `~/.config/dotfiles/agents.txt` and `~/.config/dotfiles/skills.manifest`,
+  recording CLI versions, plugin marketplaces, enabled or installed plugins
+  across Claude, Codex, and Antigravity, and skill sources)
+- A generated Homebrew inventory (for example `~/.config/dotfiles/Brewfile`
+  from `brew bundle dump`), recording taps, formulae, casks and Mac App Store
+  apps so that `brew bundle install` can restore them
 - Agent skill directories whose entries are symlinks to a shared skills
   directory
 
+Generated inventories are usually refreshed and staged by a `pre-commit` hook,
+so expect them in your commits. Never hand-edit them. To change what they
+record, change the machine (for example `brew install` or `brew uninstall`)
+and commit; the hook captures the new state. If the hook can be skipped (for
+example with an environment variable), a skipped commit leaves them stale
+until the next normal commit.
+
 When a skill is its own git repo, its content is **not** tracked here. Commit
 skill changes in that repo, not via `myconfig`.
+
+Plugin clones and harness caches (for example `~/.claude/plugins/`,
+`~/.codex/plugins/`, `~/.gemini/config/plugins/`) are not tracked directly
+either; track plugins through declarative settings and generated inventories
+instead.
 
 ## Harness Instruction Files
 
@@ -68,6 +89,12 @@ harness-specific.
 
 ## Committing
 
+- Commit dotfiles directly on the default branch (usually `main`) and push
+  there. Do not create feature branches or open pull requests for dotfile
+  changes unless the user asks for one.
+- Check the branch before every commit (`myconfig branch --show-current`). If
+  it is not the default branch, for example one left over from an earlier
+  session, stop and ask before committing. Don't commit to it and push.
 - Use the repository's existing commit identity and message conventions. If
   no identity is configured, use a one-off `git -c user.name=… -c
   user.email=…`; never write git config to fix it.
